@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JSON Overview - Json Utilities</title>
+    <link rel="stylesheet" href="../style.css">
+    <link rel="icon" href="../favicon.ico" type="image/x-icon">
+</head>
+<body>
+    <main class="main-content">
+        <header class="header">
+            <section class="container">
+                <h1 class="title-main">JSON Overview</h1>
+                <h6 class="subtitle-author">
+                    by<br>
+                    <a href="https://www.linkedin.com/in/ewandrors/">Ewandro Rodrigues Silva</a>
+                </h6>
+            </section>
+        </header>
+
+        <section class="section-start-content">
+            <div class="content-wrapper">
+                <h2>What is JSON?</h2>
+                <p>
+                    JSON (JavaScript Object Notation) is a lightweight, text-based data interchange format that has become the backbone of modern web communication. Originally derived from JavaScript object literals, JSON is now language-independent and supported by virtually all programming languages and platforms.
+                </p>
+                <p>
+                    JSON's popularity stems from its perfect balance of simplicity, human readability, and machine efficiency. Unlike XML with its verbose markup, JSON provides a clean, minimal syntax that reduces payload size by 50-70% while maintaining excellent parsing performance across different systems.
+                </p>
+                <p>
+                    Today, JSON powers REST APIs, NoSQL databases (MongoDB, CouchDB), configuration management, real-time communication (WebSockets), and serves as the standard format for data exchange in microservices architectures.
+                </p>
+            </div>
+        </section>
+
+        <section class="section-start-content-2">
+            <div class="content-wrapper">
+                <h2>JSON Structure & Data Types</h2>
+                <p>
+                    JSON is built on two fundamental universal structures that mirror common programming constructs, making it intuitive for developers across different languages:
+                </p>
+                <ul>
+                    <li><strong>Object:</strong> An unordered collection of key/value pairs enclosed in curly braces {}, similar to hash tables, dictionaries, or maps</li>
+                    <li><strong>Array:</strong> An ordered list of values enclosed in square brackets [], similar to arrays, lists, or vectors</li>
+                    <li><strong>String:</strong> Unicode text in double quotes, supporting escape sequences (\n, \t, \", \\, \uXXXX)</li>
+                    <li><strong>Number:</strong> Integer or floating-point following IEEE 754 standard, no octal or hexadecimal</li>
+                    <li><strong>Boolean:</strong> Literal true or false values (lowercase only)</li>
+                    <li><strong>null:</strong> Represents empty or missing value (lowercase only)</li>
+                </ul>
+                <pre class="code-example">
+// Complete JSON data type demonstration
+{
+    "textData": "Hello World! 🌍",
+    "integerNumber": 42,
+    "floatingNumber": 3.14159,
+    "scientificNotation": 1.23e-4,
+    "booleanTrue": true,
+    "booleanFalse": false,
+    "nullValue": null,
+    "emptyString": "",
+    "unicodeString": "Café naïve résumé 中文 🚀",
+    "escapedString": "Line 1\nLine 2\tTabbed \"Quoted\"",
+    "simpleArray": [1, 2, 3, "mixed", true, null],
+    "emptyArray": [],
+    "nestedObject": {
+        "level2": {
+            "level3": "Deep nesting possible"
+        }
+    },
+    "emptyObject": {}
+}
+                </pre>
+            </div>
+        </section>
+
+        <section class="section-start-content">
+            <div class="content-wrapper">
+                <h2>JSON vs Other Data Formats</h2>
+                <p>
+                    Understanding JSON's strengths and limitations compared to other data interchange formats helps in making informed architectural decisions:
+                </p>
+                <ul>
+                    <li><strong>JSON vs XML:</strong> JSON is 50-70% more compact, faster to parse, but lacks attributes, namespaces, comments, and schema validation</li>
+                    <li><strong>JSON vs YAML:</strong> YAML is more human-readable with multi-line strings and comments, but JSON parses 2-3x faster</li>
+                    <li><strong>JSON vs CSV:</strong> JSON handles hierarchical and complex data better, CSV is simpler for flat tabular data</li>
+                    <li><strong>JSON vs Protocol Buffers:</strong> Protobuf is 3-10x smaller and faster, JSON is self-describing and debuggable</li>
+                    <li><strong>JSON vs MessagePack:</strong> MessagePack is binary and more efficient, JSON is text-based and universally readable</li>
+                </ul>
+                <pre class="code-example">
+// JSON - Compact and widely supported
+{
+    "user": {
+        "name": "John Doe",
+        "age": 30,
+        "skills": ["JavaScript", "Python"],
+        "isActive": true
+    }
+}
+
+// XML - More verbose but feature-rich
+&lt;user&gt;
+    &lt;name&gt;John Doe&lt;/name&gt;
+    &lt;age type="integer"&gt;30&lt;/age&gt;
+    &lt;skills&gt;
+        &lt;skill&gt;JavaScript&lt;/skill&gt;
+        &lt;skill&gt;Python&lt;/skill&gt;
+    &lt;/skills&gt;
+    &lt;isActive&gt;true&lt;/isActive&gt;
+&lt;/user&gt;
+
+// YAML - Human-friendly
+user:
+  name: John Doe
+  age: 30
+  skills:
+    - JavaScript
+    - Python
+  isActive: true
+  # Comments are supported
+                </pre>
+            </div>
+        </section>
+
+        <section class="section-start-content-2">
+            <div class="content-wrapper">
+                <h2>JSON Syntax Rules & Common Pitfalls</h2>
+                <p>
+                    JSON has strict syntax rules derived from JavaScript object notation. Understanding these rules prevents common parsing errors and ensures cross-platform compatibility:
+                </p>
+                <ul>
+                    <li><strong>Strings:</strong> Must use double quotes only (single quotes invalid)</li>
+                    <li><strong>Object keys:</strong> Must always be strings in double quotes</li>
+                    <li><strong>Trailing commas:</strong> Not allowed after last element in objects or arrays</li>
+                    <li><strong>Comments:</strong> Not supported in standard JSON (use JSON5 or JSONC for comments)</li>
+                    <li><strong>Functions/undefined:</strong> Cannot contain JavaScript functions or undefined values</li>
+                    <li><strong>Case sensitivity:</strong> Keys and string values are case-sensitive</li>
+                    <li><strong>Duplicate keys:</strong> Allowed but discouraged (last value wins in most parsers)</li>
+                </ul>
+                <pre class="code-example">
+// ✅ Valid JSON - follows all rules
+{
+    "userName": "john_doe",
+    "isVerified": true,
+    "accountBalance": 1250.75,
+    "tags": ["premium", "verified"],
+    "metadata": null,
+    "settings": {
+        "theme": "dark",
+        "notifications": true
+    }
+}
+
+// ❌ Invalid JSON - common mistakes
+{
+    'userName': 'john_doe',        // Single quotes not allowed
+    isVerified: true,              // Keys must be quoted
+    accountBalance: 1,250.75,      // No comma separators in numbers
+    tags: ['premium', 'verified',],// Trailing comma not allowed
+    metadata: undefined,           // undefined not allowed
+    settings: {
+        theme: "dark",
+        // comments not allowed in standard JSON
+        notifications: true
+    },
+}
+
+// ✅ JSON Schema validation example
+{
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "type": "object",
+    "properties": {
+        "name": {"type": "string", "minLength": 1},
+        "age": {"type": "integer", "minimum": 0, "maximum": 150},
+        "email": {"type": "string", "format": "email"}
+    },
+    "required": ["name", "age"],
+    "additionalProperties": false
+}
+                </pre>
+            </div>
+        </section>
+
+        <section class="section-start-content">
+            <div class="content-wrapper">
+                <h2>JSON in Modern Development</h2>
+                <p>
+                    JSON has evolved beyond simple data exchange to become integral to modern development workflows, tools, and architectures:
+                </p>
+                <ul>
+                    <li><strong>API Development:</strong> REST, GraphQL, and WebSocket APIs use JSON for request/response payloads</li>
+                    <li><strong>Configuration Management:</strong> package.json, tsconfig.json, .eslintrc.json, Docker Compose files</li>
+                    <li><strong>Database Storage:</strong> MongoDB documents, PostgreSQL JSONB columns, Elasticsearch indices</li>
+                    <li><strong>Build Tools:</strong> Webpack configs, Babel presets, npm scripts, CI/CD pipeline definitions</li>
+                    <li><strong>State Management:</strong> Redux state, localStorage data, session storage, application caches</li>
+                    <li><strong>Logging & Analytics:</strong> Structured logging, event tracking, monitoring systems</li>
+                </ul>
+                <pre class="code-example">
+// Modern package.json example
+{
+    "name": "my-web-app",
+    "version": "2.1.0",
+    "description": "A modern web application",
+    "main": "dist/index.js",
+    "type": "module",
+    "scripts": {
+        "dev": "vite",
+        "build": "tsc && vite build",  
+        "test": "vitest",
+        "lint": "eslint src/**/*.{ts,tsx}",
+        "deploy": "npm run build && aws s3 sync dist/ s3://my-bucket"
+    },
+    "dependencies": {
+        "react": "^18.2.0",
+        "typescript": "^5.1.0"
+    },
+    "devDependencies": {
+        "vite": "^4.4.0",
+        "vitest": "^0.34.0",
+        "@types/react": "^18.2.0"
+    },
+    "engines": {
+        "node": ">=18.0.0",
+        "npm": ">=9.0.0"
+    },
+    "keywords": ["react", "typescript", "vite"],
+    "author": "Your Name &lt;email@example.com&gt;",
+    "license": "MIT"
+}
+                </pre>
+            </div>
+        </section>
+
+        <nav class="navigation-links">
+            <a href="../index.html" class="nav-link">← Back to Home</a>
+            <a href="examples.html" class="nav-link">Examples →</a>
+        </nav>
+    </main>
+
+    <footer class="footer-wrapper">
+        <section class="container">
+            <h5>&copy; 2023 Ewandro Rodrigues Silva. All rights reserved.</h5>
+            <div class="social-media-link-container">
+                <ul class="social-media-link-group">
+                    <li class="social-media-links">
+                        <a href="https://github.com/EwandroRS" class="social-media-link" target="_blank" rel="noopener noreferrer">
+                            <img src="../images/github.png" alt="GitHub" class="social-media-icon">
+                        </a>
+                    </li>
+                    <li class="social-media-links">
+                        <a href="https://www.youtube.com/@ewandrorsdev" class="social-media-link" target="_blank" rel="noopener noreferrer">
+                            <img src="../images/youtube.png" alt="YouTube" class="social-media-icon">
+                        </a>
+                    </li>
+                    <li class="social-media-links">
+                        <a href="https://www.linkedin.com/in/ewandrors/" class="social-media-link" target="_blank" rel="noopener noreferrer">
+                            <img src="../images/linkedin.png" alt="LinkedIn" class="social-media-icon">
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </section>
+    </footer>
+</body>
+</html>

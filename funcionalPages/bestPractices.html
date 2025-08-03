@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JSON Best Practices - Json Utilities</title>
+    <link rel="stylesheet" href="../style.css">
+    <link rel="icon" href="../favicon.ico" type="image/x-icon">
+</head>
+<body>
+    <main class="main-content">
+        <header class="header">
+            <section class="container">
+                <h1 class="title-main">JSON Best Practices</h1>
+                <h6 class="subtitle-author">
+                    by<br>
+                    <a href="https://www.linkedin.com/in/ewandrors/">Ewandro Rodrigues Silva</a>
+                </h6>
+            </section>
+        </header>
+
+        <section class="section-start-content">
+            <div class="content-wrapper">
+                <h2>Naming Conventions & Structure</h2>
+                <p>
+                    Proper naming conventions are crucial for maintainable JSON. Follow these guidelines for consistent and readable data structures that scale across teams and projects.
+                </p>
+                <ul>
+                    <li><strong>Use camelCase:</strong> For property names like "firstName", "phoneNumber", "createdAt"</li>
+                    <li><strong>Be descriptive:</strong> "userAccountStatus" instead of "status", "maxRetryAttempts" instead of "max"</li>
+                    <li><strong>Avoid abbreviations:</strong> "identifier" instead of "id" when clarity matters, "configuration" instead of "config"</li>
+                    <li><strong>Use consistent pluralization:</strong> "users" for arrays, "user" for single objects</li>
+                    <li><strong>Include units in names:</strong> "timeoutInSeconds", "distanceInMeters", "priceInCents"</li>
+                    <li><strong>Boolean prefixes:</strong> Use "is", "has", "can" prefixes: "isActive", "hasPermission", "canEdit"</li>
+                </ul>
+                <pre class="code-example">
+// ✅ Good naming practices
+{
+    "userProfile": {
+        "firstName": "John",
+        "lastName": "Doe", 
+        "isEmailVerified": true,
+        "accountCreatedAt": "2023-10-15T14:30:00Z",
+        "phoneNumbers": [
+            {
+                "type": "mobile",
+                "number": "+1-555-0123",
+                "isPrimary": true
+            }
+        ],
+        "subscriptionExpiresAt": "2024-12-31T23:59:59Z"
+    }
+}
+
+// ❌ Poor naming practices
+{
+    "usr": {
+        "fn": "John",
+        "ln": "Doe",
+        "verified": 1,
+        "created": "2023-10-15",
+        "phones": ["+1-555-0123"],
+        "exp": "2024-12-31"
+    }
+}
+                </pre>
+            </div>
+        </section>
+
+        <section class="section-start-content-2">
+            <div class="content-wrapper">
+                <h2>Data Type Best Practices</h2>
+                <p>
+                    Choosing the right data types prevents parsing errors, improves API consistency, and ensures compatibility across different programming languages and platforms.
+                </p>
+                <ul>
+                    <li><strong>Use appropriate types:</strong> Numbers for numeric data, booleans for true/false, strings for text</li>
+                    <li><strong>Handle null vs undefined:</strong> Use null explicitly for missing values, avoid undefined</li>
+                    <li><strong>String formatting:</strong> Use ISO 8601 for dates (YYYY-MM-DD), RFC 3339 for timestamps</li>
+                    <li><strong>Numeric precision:</strong> Be aware of floating-point limitations, use strings for high precision</li>
+                    <li><strong>Empty collections:</strong> Use [] for empty arrays, {} for empty objects, null for missing data</li>
+                    <li><strong>Consistent formatting:</strong> Currency in cents, coordinates as numbers, IDs as strings</li>
+                </ul>
+                <pre class="code-example">
+// ✅ Proper data types and formatting
+{
+    "product": {
+        "id": "PROD_12345",
+        "name": "Wireless Headphones",
+        "priceInCents": 9999,
+        "currency": "USD",
+        "isAvailable": true,
+        "stockQuantity": 42,
+        "weight": 0.35,
+        "dimensions": {
+            "length": 18.5,
+            "width": 16.2,
+            "height": 8.1,
+            "unit": "cm"
+        },
+        "tags": ["electronics", "audio", "wireless"],
+        "discontinuedAt": null,
+        "createdAt": "2023-10-15T14:30:00.000Z",
+        "metadata": {
+            "color": "black",
+            "warranty": "2 years"
+        }
+    }
+}
+
+// ❌ Poor data type choices  
+{
+    "product": {
+        "id": 12345,
+        "price": "99.99",
+        "available": "true",
+        "stock": "42",
+        "created": "Oct 15, 2023",
+        "tags": "electronics,audio,wireless"
+    }
+}
+                </pre>
+            </div>
+        </section>
+
+        <section class="section-start-content">
+            <div class="content-wrapper">
+                <h2>Security & Validation</h2>
+                <p>
+                    Security considerations are essential when working with JSON data, especially in web applications, APIs, and data exchange between systems.
+                </p>
+                <ul>
+                    <li><strong>Input validation:</strong> Always validate JSON structure, data types, and business rules</li>
+                    <li><strong>Size limits:</strong> Implement reasonable payload size restrictions (typically 1-10MB)</li>
+                    <li><strong>Sanitize output:</strong> Escape special characters when displaying JSON content in HTML</li>
+                    <li><strong>No sensitive data:</strong> Never include passwords, API keys, tokens, or personal data</li>
+                    <li><strong>Use HTTPS:</strong> Always transmit JSON over secure connections in production</li>
+                    <li><strong>Content-Type headers:</strong> Set proper MIME types (application/json) and charset</li>
+                    <li><strong>Rate limiting:</strong> Implement API rate limits to prevent abuse</li>
+                    <li><strong>Schema validation:</strong> Use JSON Schema or similar tools for validation</li>
+                </ul>
+                <pre class="code-example">
+// ✅ Security-conscious JSON structure
+{
+    "apiVersion": "v2.1",
+    "timestamp": "2023-10-15T14:30:00.000Z",
+    "requestId": "req_abc123def456",
+    "data": {
+        "userId": "USR_12345",
+        "email": "user@example.com",
+        "profilePictureUrl": "https://cdn.example.com/avatars/user123.jpg",
+        "preferences": {
+            "theme": "dark",
+            "language": "en-US",
+            "notifications": true
+        }
+    },
+    "meta": {
+        "totalRecords": 1,
+        "processingTimeMs": 45,
+        "serverVersion": "1.2.3"
+    }
+}
+
+// ❌ Security risks - NEVER do this
+{
+    "user": {
+        "password": "mySecretPassword123!",
+        "apiKey": "sk_live_abc123def456",
+        "creditCard": "4111-1111-1111-1111",
+        "ssn": "123-45-6789",
+        "internalUserId": 12345,
+        "debugInfo": {
+            "databasePassword": "db_secret_123",
+            "serverIP": "192.168.1.100"
+        }
+    }
+}
+                </pre>
+            </div>
+        </section>
+
+        <section class="section-start-content-2">
+            <div class="content-wrapper">
+                <h2>Performance & Optimization</h2>
+                <p>
+                    Optimize JSON for better performance, especially important for large datasets, mobile applications, and high-traffic APIs.
+                </p>
+                <ul>
+                    <li><strong>Minimize whitespace:</strong> Remove unnecessary spaces and formatting in production</li>
+                    <li><strong>Use compression:</strong> Enable gzip/brotli compression for HTTP responses (70-90% size reduction)</li>
+                    <li><strong>Implement pagination:</strong> Break large datasets into manageable chunks (typically 20-100 items)</li>
+                    <li><strong>Cache strategically:</strong> Use ETags, Last-Modified headers, and CDN caching</li>
+                    <li><strong>Streaming for large files:</strong> Use streaming parsers for JSON files > 10MB</li>
+                    <li><strong>Avoid deep nesting:</strong> Flatten structures when possible (max 3-4 levels)</li>
+                    <li><strong>Field selection:</strong> Allow clients to specify which fields they need</li>
+                    <li><strong>Use efficient algorithms:</strong> Consider alternatives like MessagePack for high-performance scenarios</li>
+                </ul>
+                <pre class="code-example">
+// ✅ Optimized pagination structure
+{
+    "data": [
+        {
+            "id": "ITEM_001",
+            "name": "Product 1",
+            "price": 2999
+        },
+        {
+            "id": "ITEM_002", 
+            "name": "Product 2",
+            "price": 1999
+        }
+    ],
+    "pagination": {
+        "currentPage": 1,
+        "pageSize": 20,
+        "totalPages": 25,
+        "totalItems": 500,
+        "hasNextPage": true,
+        "hasPreviousPage": false
+    },
+    "links": {
+        "self": "/api/v1/products?page=1&limit=20",
+        "next": "/api/v1/products?page=2&limit=20",
+        "last": "/api/v1/products?page=25&limit=20"
+    },
+    "meta": {
+        "requestId": "req_123",
+        "responseTimeMs": 85,
+        "cacheStatus": "miss"
+    }
+}
+
+// ✅ Field selection example
+{
+    "data": [
+        {
+            "id": "USR_001",
+            "name": "John Doe",
+            "email": "john@example.com"
+            // Only requested fields included
+        }
+    ],
+    "query": {
+        "fields": ["id", "name", "email"],
+        "excludeFields": ["internalNotes", "permissions"]
+    }
+}
+                </pre>
+            </div>
+        </section>
+
+        <section class="section-start-content">
+            <div class="content-wrapper">
+                <h2>Error Handling & API Design</h2>
+                <p>
+                    Implement consistent error handling and provide meaningful error messages for better debugging experience and API usability.
+                </p>
+                <ul>
+                    <li><strong>Consistent error format:</strong> Use standardized error response structure across all endpoints</li>
+                    <li><strong>HTTP status codes:</strong> Align JSON errors with proper HTTP status codes (400, 401, 403, 404, 500)</li>
+                    <li><strong>Error codes:</strong> Include machine-readable error codes for programmatic handling</li>
+                    <li><strong>Detailed messages:</strong> Provide human-readable error descriptions and suggestions</li>
+                    <li><strong>Field-level errors:</strong> Specify which fields have validation issues with context</li>
+                    <li><strong>Localization support:</strong> Include error message keys for internationalization</li>
+                    <li><strong>Error tracking:</strong> Include request IDs for debugging and support</li>
+                </ul>
+                <pre class="code-example">
+// ✅ Comprehensive error response structure
+{
+    "error": {
+        "type": "validation_error",
+        "code": "INVALID_REQUEST_DATA",
+        "message": "The request contains invalid or missing data",
+        "timestamp": "2023-10-15T14:30:00.000Z",
+        "requestId": "req_abc123def456",
+        "documentation": "https://api.example.com/docs/errors#INVALID_REQUEST_DATA",
+        "details": [
+            {
+                "field": "email",
+                "code": "INVALID_FORMAT",
+                "message": "Email address format is invalid",
+                "value": "invalid-email",
+                "suggestion": "Please provide a valid email address (e.g., user@example.com)"
+            },
+            {
+                "field": "age",
+                "code": "OUT_OF_RANGE", 
+                "message": "Age must be between 18 and 120",
+                "value": 150,
+                "min": 18,
+                "max": 120
+            }
+        ]
+    },
+    "meta": {
+        "apiVersion": "v2.1",
+        "serverTime": "2023-10-15T14:30:00.000Z"
+    }
+}
+
+// ✅ Success response with consistent structure
+{
+    "status": "success",
+    "data": {
+        "user": {
+            "id": "USR_12345",
+            "name": "John Doe",
+            "email": "john@example.com",
+            "createdAt": "2023-10-15T14:30:00.000Z"
+        }
+    },
+    "meta": {
+        "requestId": "req_abc123def456",
+        "processingTimeMs": 42,
+        "apiVersion": "v2.1"
+    }
+}
+                </pre>
+            </div>
+        </section>
+
+        <nav class="navigation-links">
+            <a href="examples.html" class="nav-link">← Examples</a>
+            <a href="../index.html" class="nav-link">Back to Home →</a>
+        </nav>
+    </main>
+
+    <footer class="footer-wrapper">
+        <section class="container">
+            <h5>&copy; 2023 Ewandro Rodrigues Silva. All rights reserved.</h5>
+            <div class="social-media-link-container">
+                <ul class="social-media-link-group">
+                    <li class="social-media-links">
+                        <a href="https://github.com/EwandroRS" class="social-media-link" target="_blank" rel="noopener noreferrer">
+                            <img src="../images/github.png" alt="GitHub" class="social-media-icon">
+                        </a>
+                    </li>
+                    <li class="social-media-links">
+                        <a href="https://www.youtube.com/@ewandrorsdev" class="social-media-link" target="_blank" rel="noopener noreferrer">
+                            <img src="../images/youtube.png" alt="YouTube" class="social-media-icon">
+                        </a>
+                    </li>
+                    <li class="social-media-links">
+                        <a href="https://www.linkedin.com/in/ewandrors/" class="social-media-link" target="_blank" rel="noopener noreferrer">
+                            <img src="../images/linkedin.png" alt="LinkedIn" class="social-media-icon">
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </section>
+    </footer>
+</body>
+</html>

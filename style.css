@@ -1,0 +1,429 @@
+/* Estilos base */
+body {
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 16px;
+  margin: 0;
+  padding: 0;
+  background-color: #000000;
+  overflow-x: hidden;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+main.main-content {
+  width: 100%;
+  flex: 1;
+}
+
+header.header {
+  width: 100%;
+  background-color: #ffffff;
+  padding: 5px;
+  text-align: center;
+  margin-bottom: 30px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+header.header .container {
+  max-width: 600px;
+  width: 100%;
+  padding: 0 15px;
+  box-sizing: border-box;
+}
+
+div.content-wrapper {
+  width: 100%;
+  max-width: 100%;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+section.section-start-content,
+section.section-start-content-2 {
+  background-color: #ffffff;
+  padding: 20px;
+  border-radius: 8px;
+  width: 60%;
+  margin: 20px auto;
+  box-sizing: border-box;
+  min-height: 200px;
+  height: auto;
+}
+
+section.section-start-content-2 {
+  min-height: 250px; 
+}
+
+/* Estilos para conteúdo das sections */
+section.section-start-content h2,
+section.section-start-content-2 h2 {
+  margin-top: 0;
+  margin-bottom: 15px;
+  font-size: 24px;
+  color: #333;
+}
+
+section.section-start-content p,
+section.section-start-content-2 p {
+  font-size: 16px;
+  line-height: 1.6;
+  margin-bottom: 15px;
+  text-align: justify;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+}
+
+section.section-start-content-2 ul {
+  margin: 15px 0;
+  padding-left: 20px;
+}
+
+section.section-start-content-2 li {
+  margin-bottom: 8px;
+  line-height: 1.5;
+}
+
+section.section-start-content-2 a {
+  color: #0066cc;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+section.section-start-content-2 a:hover {
+  color: #004499;
+  text-decoration: underline;
+}
+
+/* Footer com ajuste para sobrepor corretamente */
+footer.footer-wrapper {
+  width: 50%;
+  max-width: 1200px;
+  background-color: #ffffff;
+  padding: 20px;
+  text-align: center;
+  border-top-left-radius: 9.5px;
+  border-top-right-radius: 9.5px;
+  margin: 20px auto 0 auto;
+  box-sizing: border-box;
+  height: auto;
+  font-family: 'Courier New', Courier, monospace;
+  box-shadow: 0 -2px 8px rgba(0,0,0,0.1);
+}
+
+/* Estilização de elementos do header com classes próprias */
+.title-main {
+  font-size: 32px;
+  margin: 0;
+}
+
+.subtitle-author {
+  font-size: 16px;
+  margin-top: -3px;
+}
+
+.project-description {
+  font-size: 16px;
+  line-height: 1.6;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  text-align: justify;
+  overflow: visible; 
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  max-width: 100%;
+}
+
+/* Responsividade: tablets */
+@media (min-width: 769px) and (max-width: 800px) {
+  section.section-start-content,
+  section.section-start-content-2 {
+    width: 85% !important;
+    max-width: 700px;
+    padding: 20px !important;
+    margin: 20px auto !important;
+    min-height: auto !important;
+    box-sizing: border-box;
+  }
+  
+  section.section-start-content h2,
+  section.section-start-content-2 h2 {
+    font-size: 22px !important;
+  }
+  
+  section.section-start-content p,
+  section.section-start-content-2 p {
+    font-size: 15px !important;
+    line-height: 1.5 !important;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    hyphens: auto;
+  }
+  
+  div.content-wrapper {
+    width: 100% !important;
+    padding: 0 !important;
+  }
+}
+
+/* Responsividade intermediária para evitar corte (até 624px) */
+@media (max-width: 624px) {
+  header.header .container {
+    max-width: 100% !important;
+    padding: 0 10px !important;
+  }
+
+  section.section-start-content,
+  section.section-start-content-2,
+  footer.footer-wrapper {
+    width: 95% !important;
+    margin: 15px auto !important;
+    padding: 15px !important;
+    box-sizing: border-box;
+  }
+
+  div.content-wrapper {
+    width: 100% !important;
+    padding: 0 !important;
+    margin: 0 !important;
+  }
+
+  section.section-start-content h2,
+  section.section-start-content-2 h2 {
+    font-size: 20px !important;
+  }
+
+  section.section-start-content p,
+  section.section-start-content-2 p {
+    font-size: 14px !important;
+    line-height: 1.4 !important;
+    text-align: left !important;
+    word-wrap: break-word !important;
+    overflow-wrap: break-word !important;
+  }
+}
+
+/* Responsividade: celulares */
+@media (max-width: 480px) {
+  .title-main {
+    font-size: 20px;
+  }
+
+  .subtitle-author {
+    font-size: 13px;
+  }
+
+  section.section-start-content,
+  section.section-start-content-2,
+  footer.footer-wrapper {
+    width: 100% !important;
+    margin: 10px auto !important;
+    padding: 15px !important;
+  }
+
+  div.content-wrapper {
+    width: 100% !important;
+    padding: 0 !important;
+  }
+
+  section.section-start-content h2,
+  section.section-start-content-2 h2 {
+    font-size: 18px !important;
+    margin-bottom: 10px !important;
+  }
+
+  section.section-start-content p,
+  section.section-start-content-2 p {
+    font-size: 14px !important;
+    line-height: 1.4 !important;
+    text-align: left !important;
+  }
+
+  section.section-start-content-2 ul {
+    padding-left: 15px !important;
+  }
+
+  section.section-start-content-2 li {
+    font-size: 14px !important;
+    margin-bottom: 6px !important;
+  }
+}
+
+/* Footer - social media styles (sugestão caso use os ícones) */
+footer.footer-wrapper .container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 15px;
+}
+
+footer.footer-wrapper h5 {
+  margin: 0;
+  font-size: 16px;
+  color: #333333;
+}
+
+.social-media-link-container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.social-media-link-group {
+  list-style: none;
+  display: flex;
+  padding: 0;
+  margin: 0;
+  gap: 25px;
+}
+
+.social-media-links {
+  display: flex;
+  align-items: center;
+}
+
+.social-media-link {
+  display: inline-block;
+  transition: transform 0.3s ease, filter 0.3s ease;
+}
+
+.social-media-icon {
+  width: 32px;
+  height: 32px;
+  object-fit: contain;
+  filter: grayscale(100%);
+  transition: filter 0.3s ease, transform 0.3s ease;
+}
+
+.social-media-link:hover .social-media-icon {
+  filter: grayscale(0%);
+  transform: scale(1.1);
+}
+
+@media (max-width: 624px) {
+  footer.footer-wrapper {
+    padding: 15px;
+  }
+
+  .social-media-link-group {
+    gap: 15px;
+  }
+
+  .social-media-icon {
+    width: 28px;
+    height: 28px;
+  }
+
+  footer.footer-wrapper h5 {
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 480px) {
+  footer.footer-wrapper {
+    padding: 10px;
+  }
+
+  .social-media-icon {
+    width: 24px;
+    height: 24px;
+  }
+  
+  footer.footer-wrapper h5 {
+    font-size: 13px;
+  }
+}
+
+/* Estilos específicos para páginas de conteúdo */
+.code-example {
+  background-color: #f5f5f5;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  padding: 15px;
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 14px;
+  line-height: 1.4;
+  overflow-x: auto;
+  margin: 15px 0;
+  white-space: pre-wrap;
+  word-wrap: break-word;
+}
+
+/* Navegação entre páginas */
+.navigation-links {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 30px auto;
+  padding: 20px;
+  max-width: 800px;
+  width: 60%;
+  box-sizing: border-box;
+}
+
+.nav-link {
+  display: inline-block;
+  padding: 10px 20px;
+  background-color: #0066cc;
+  color: white;
+  text-decoration: none;
+  border-radius: 5px;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  font-weight: bold;
+}
+
+.nav-link:hover {
+  background-color: #004499;
+  transform: translateY(-2px);
+}
+
+/* Melhorias para listas nas páginas de conteúdo */
+section.section-start-content ul li,
+section.section-start-content-2 ul li {
+  margin-bottom: 10px;
+  line-height: 1.6;
+}
+
+section.section-start-content ul li strong,
+section.section-start-content-2 ul li strong {
+  color: #333;
+  font-weight: bold;
+}
+
+/* Responsividade para navegação */
+@media (max-width: 624px) {
+  .navigation-links {
+    width: 95% !important;
+    flex-direction: column;
+    gap: 15px;
+  }
+  
+  .nav-link {
+    width: 100%;
+    text-align: center;
+    padding: 12px 15px;
+  }
+  
+  .code-example {
+    font-size: 12px;
+    padding: 10px;
+  }
+}
+
+@media (max-width: 480px) {
+  .navigation-links {
+    width: 100% !important;
+    margin: 20px auto;
+    padding: 15px;
+  }
+  
+  .code-example {
+    font-size: 11px;
+    padding: 8px;
+    margin: 10px 0;
+  }
+}

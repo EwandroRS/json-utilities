@@ -1,0 +1,586 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JSON Examples - Json Utilities</title>
+    <link rel="stylesheet" href="../style.css">
+    <link rel="icon" href="../favicon.ico" type="image/x-icon">
+</head>
+<body>
+    <main class="main-content">
+        <header class="header">
+            <section class="container">
+                <h1 class="title-main">JSON Examples</h1>
+                <h6 class="subtitle-author">
+                    by<br>
+                    <a href="https://www.linkedin.com/in/ewandrors/">Ewandro Rodrigues Silva</a>
+                </h6>
+            </section>
+        </header>
+
+        <section class="section-start-content">
+            <div class="content-wrapper">
+                <h2>Basic JSON Object Structure</h2>
+                <p>A well-structured JSON object demonstrates fundamental data types and proper formatting conventions. This example shows a comprehensive user profile with various data types:</p>
+                <pre class="code-example">
+{
+    "id": "USR_001",
+    "firstName": "John",
+    "lastName": "Doe",
+    "email": "john.doe@example.com",
+    "age": 30,
+    "isActive": true,
+    "salary": 75000.50,
+    "department": null,
+    "joinDate": "2023-01-15T08:30:00.000Z",
+    "skills": ["JavaScript", "Python", "SQL"],
+    "address": {
+        "street": "123 Main St",
+        "city": "New York",
+        "zipCode": "10001",
+        "country": "USA"
+    },
+    "preferences": {
+        "theme": "dark",
+        "language": "en-US",
+        "notifications": {
+            "email": true,
+            "sms": false,
+            "push": true
+        }
+    }
+}
+                </pre>
+                <p><strong>Key features:</strong> Mixed data types, nested objects, null values, proper date formatting (ISO 8601), and descriptive property names following camelCase convention.</p>
+            </div>
+        </section>
+
+        <section class="section-start-content-2">
+            <div class="content-wrapper">
+                <h2>JSON Arrays & Collections</h2>
+                <p>Arrays in JSON are perfect for representing collections, lists, and database query results. This example shows a typical API response with user data:</p>
+                <pre class="code-example">
+{
+    "status": "success",
+    "data": {
+        "users": [
+            {
+                "id": "USR_001",
+                "name": "Alice Johnson",
+                "email": "alice@techcorp.com",
+                "role": "senior-developer",
+                "department": "Engineering",
+                "skills": ["React", "TypeScript", "Node.js", "PostgreSQL"],
+                "experience": "5 years",
+                "isTeamLead": true,
+                "projects": [
+                    {
+                        "name": "E-commerce Platform",
+                        "status": "active",
+                        "progress": 75
+                    },
+                    {
+                        "name": "Mobile App API",
+                        "status": "completed", 
+                        "progress": 100
+                    }
+                ]
+            },
+            {
+                "id": "USR_002",
+                "name": "Bob Smith",
+                "email": "bob@techcorp.com",
+                "role": "ui-ux-designer",
+                "department": "Design",
+                "skills": ["Figma", "Adobe XD", "CSS", "Prototyping"],
+                "experience": "3 years",
+                "isTeamLead": false,
+                "projects": [
+                    {
+                        "name": "Design System",
+                        "status": "active",
+                        "progress": 60
+                    }
+                ]
+            }
+        ],
+        "totalCount": 2,
+        "activeUsers": 2
+    },
+    "meta": {
+        "timestamp": "2023-10-15T14:30:00.000Z",
+        "apiVersion": "v2.1",
+        "requestId": "req_abc123"
+    }
+}
+                </pre>
+                <p><strong>Use cases:</strong> User management systems, employee directories, project tracking, and any scenario requiring structured collections with consistent schemas.</p>
+            </div>
+        </section>
+
+        <section class="section-start-content">
+            <div class="content-wrapper">
+                <h2>Complex Enterprise Data Structure</h2>
+                <p>Real-world applications often require deeply nested JSON structures. This example demonstrates a comprehensive business entity with multiple levels of nesting:</p>
+                <pre class="code-example">
+{
+    "company": {
+        "id": "COMP_TECH_001",
+        "name": "TechCorp Global Solutions",
+        "legalName": "TechCorp Global Solutions, Inc.",
+        "founded": 2010,
+        "industry": "Software Development",
+        "size": "medium",
+        "website": "https://techcorp.com",
+        "headquarters": {
+            "address": {
+                "street": "123 Innovation Drive",
+                "suite": "Floor 15",
+                "city": "San Francisco",
+                "state": "California",
+                "zipCode": "94105",
+                "country": "United States",
+                "countryCode": "US"
+            },
+            "coordinates": {
+                "latitude": 37.7749,
+                "longitude": -122.4194
+            },
+            "timezone": "America/Los_Angeles"
+        },
+        "departments": [
+            {
+                "id": "DEPT_ENG",
+                "name": "Engineering",
+                "description": "Software development and technical operations",
+                "headCount": 85,
+                "budget": 12500000,
+                "lead": {
+                    "employeeId": "EMP_001",
+                    "name": "Jane Smith",
+                    "email": "jane.smith@techcorp.com",
+                    "title": "VP of Engineering",
+                    "experience": "8 years",
+                    "startDate": "2018-03-15"
+                },
+                "teams": [
+                    {
+                        "id": "TEAM_FRONTEND",
+                        "name": "Frontend Development",
+                        "members": 25,
+                        "technologies": ["React", "Vue.js", "TypeScript", "Tailwind CSS"],
+                        "currentProjects": 8,
+                        "avgExperience": "4.2 years"
+                    },
+                    {
+                        "id": "TEAM_BACKEND", 
+                        "name": "Backend Development",
+                        "members": 30,
+                        "technologies": ["Node.js", "Python", "PostgreSQL", "Redis"],
+                        "currentProjects": 12,
+                        "avgExperience": "5.1 years"
+                    },
+                    {
+                        "id": "TEAM_DEVOPS",
+                        "name": "DevOps & Infrastructure",
+                        "members": 12,
+                        "technologies": ["AWS", "Docker", "Kubernetes", "Terraform"],
+                        "currentProjects": 5,
+                        "avgExperience": "6.8 years"
+                    }
+                ]
+            },
+            {
+                "id": "DEPT_DESIGN",
+                "name": "Design",
+                "description": "User experience and visual design",
+                "headCount": 18,
+                "budget": 2800000,
+                "lead": {
+                    "employeeId": "EMP_002",
+                    "name": "Mike Johnson",
+                    "email": "mike.johnson@techcorp.com",
+                    "title": "Design Director",
+                    "experience": "6 years",
+                    "startDate": "2019-07-22"
+                }
+            }
+        ],
+        "financials": {
+            "revenue": {
+                "2021": 15000000,
+                "2022": 18500000,
+                "2023": 22300000,
+                "currency": "USD"
+            },
+            "funding": {
+                "totalRaised": 50000000,
+                "lastRound": {
+                    "type": "Series B",
+                    "amount": 25000000,
+                    "date": "2022-09-15",
+                    "leadInvestor": "TechVentures Capital"
+                }
+            }
+        },
+        "locations": [
+            {
+                "city": "San Francisco",
+                "country": "USA",
+                "type": "headquarters",
+                "employees": 120
+            },
+            {
+                "city": "New York",
+                "country": "USA", 
+                "type": "office",
+                "employees": 45
+            },
+            {
+                "city": "London",
+                "country": "UK",
+                "type": "office",
+                "employees": 30
+            }
+        ],
+        "contact": {
+            "general": "info@techcorp.com",
+            "support": "support@techcorp.com",
+            "careers": "careers@techcorp.com",
+            "phone": "+1-555-0123",
+            "socialMedia": {
+                "linkedin": "https://linkedin.com/company/techcorp",
+                "twitter": "https://twitter.com/techcorp",
+                "github": "https://github.com/techcorp"
+            }
+        }
+    }
+}
+                </pre>
+                <p><strong>Enterprise applications:</strong> CRM systems, organizational charts, company directories, and complex business data management platforms.</p>
+            </div>
+        </section>
+
+        <section class="section-start-content-2">
+            <div class="content-wrapper">
+                <h2>REST API Response Patterns</h2>
+                <p>Modern REST APIs follow consistent patterns for responses. Here are examples of standard API response structures used in production systems:</p>
+                
+                <h3>Successful Data Retrieval with Pagination:</h3>
+                <pre class="code-example">
+{
+    "status": "success",
+    "statusCode": 200,
+    "data": {
+        "products": [
+            {
+                "id": "PROD_12345",
+                "name": "Wireless Bluetooth Headphones",
+                "description": "Premium noise-canceling headphones with 30-hour battery life",
+                "price": {
+                    "amount": 19999,
+                    "currency": "USD",
+                    "formatted": "$199.99"
+                },
+                "category": {
+                    "id": "CAT_ELECTRONICS",
+                    "name": "Electronics",
+                    "slug": "electronics"
+                },
+                "inventory": {
+                    "inStock": true,
+                    "quantity": 45,
+                    "lowStockThreshold": 10
+                },
+                "ratings": {
+                    "average": 4.7,
+                    "count": 328,
+                    "distribution": {
+                        "5": 245,
+                        "4": 67,
+                        "3": 12,
+                        "2": 3,
+                        "1": 1
+                    }
+                },
+                "images": [
+                    {
+                        "url": "https://cdn.example.com/products/prod_12345_main.jpg",
+                        "alt": "Front view of headphones",
+                        "isPrimary": true
+                    }
+                ],
+                "createdAt": "2023-08-15T10:30:00.000Z",
+                "updatedAt": "2023-10-14T16:45:00.000Z"
+            }
+        ]
+    },
+    "pagination": {
+        "currentPage": 1,
+        "totalPages": 25,
+        "pageSize": 20,
+        "totalItems": 500,
+        "hasNextPage": true,
+        "hasPreviousPage": false,
+        "nextPage": 2,
+        "previousPage": null
+    },
+    "links": {
+        "self": "/api/v1/products?page=1&limit=20&category=electronics",
+        "next": "/api/v1/products?page=2&limit=20&category=electronics",
+        "last": "/api/v1/products?page=25&limit=20&category=electronics"
+    },
+    "meta": {
+        "timestamp": "2023-10-15T14:30:00.000Z",
+        "apiVersion": "v2.1",
+        "requestId": "req_abc123def456",
+        "processingTimeMs": 85,
+        "filters": {
+            "category": "electronics",
+            "inStock": true
+        }
+    }
+}
+                </pre>
+
+                <h3>Comprehensive Error Response:</h3>
+                <pre class="code-example">
+{
+    "status": "error",
+    "statusCode": 422,
+    "error": {
+        "type": "validation_error",
+        "code": "INVALID_REQUEST_DATA",
+        "message": "The request contains invalid or missing required data",
+        "timestamp": "2023-10-15T14:30:00.000Z",
+        "requestId": "req_def456ghi789",
+        "documentation": "https://api.example.com/docs/errors#validation",
+        "details": [
+            {
+                "field": "email",
+                "code": "INVALID_FORMAT",
+                "message": "Email address format is invalid",
+                "rejectedValue": "invalid-email-format",
+                "expectedFormat": "user@domain.com",
+                "suggestion": "Please provide a valid email address"
+            },
+            {
+                "field": "age",
+                "code": "OUT_OF_RANGE",
+                "message": "Age must be between 18 and 120",
+                "rejectedValue": 150,
+                "constraints": {
+                    "min": 18,
+                    "max": 120
+                }
+            },
+            {
+                "field": "password",
+                "code": "INSUFFICIENT_COMPLEXITY",
+                "message": "Password does not meet security requirements",
+                "requirements": [
+                    "At least 8 characters",
+                    "One uppercase letter",
+                    "One lowercase letter", 
+                    "One number",
+                    "One special character"
+                ]
+            }
+        ]
+    },
+    "meta": {
+        "timestamp": "2023-10-15T14:30:00.000Z",
+        "apiVersion": "v2.1",
+        "supportContact": "support@example.com"
+    }
+}
+                </pre>
+                <p><strong>API design benefits:</strong> Consistent error handling, detailed debugging information, proper HTTP status codes, and comprehensive validation feedback for client applications.</p>
+            </div>
+        </section>
+
+        <section class="section-start-content">
+            <div class="content-wrapper">
+                <h2>Configuration & Settings Files</h2>
+                <p>JSON is extensively used for application configuration, build tools, and environment settings. Here are examples of common configuration patterns:</p>
+
+                <h3>Application Configuration:</h3>
+                <pre class="code-example">
+{
+    "app": {
+        "name": "MyWebApplication",
+        "version": "2.1.0",
+        "environment": "production",
+        "debug": false,
+        "maintenance": {
+            "enabled": false,
+            "message": "System under maintenance. Please try again later.",
+            "scheduledStart": null,
+            "scheduledEnd": null
+        }
+    },
+    "server": {
+        "host": "0.0.0.0",
+        "port": 3000,
+        "ssl": {
+            "enabled": true,
+            "certificatePath": "/etc/ssl/certs/app.crt",
+            "keyPath": "/etc/ssl/private/app.key"
+        },
+        "cors": {
+            "enabled": true,
+            "allowedOrigins": [
+                "https://myapp.com",
+                "https://www.myapp.com",
+                "https://admin.myapp.com"
+            ],
+            "allowedMethods": ["GET", "POST", "PUT", "DELETE", "PATCH"],
+            "allowCredentials": true
+        },
+        "rateLimiting": {
+            "enabled": true,
+            "windowMs": 900000,
+            "maxRequests": 100,
+            "message": "Too many requests from this IP"
+        }
+    },
+    "database": {
+        "primary": {
+            "type": "postgresql",
+            "host": "localhost",
+            "port": 5432,
+            "name": "myapp_production",
+            "ssl": true,
+            "poolSize": 20,
+            "connectionTimeout": 30000,
+            "queryTimeout": 60000
+        },
+        "redis": {
+            "host": "localhost",
+            "port": 6379,
+            "database": 0,
+            "ttl": 3600,
+            "keyPrefix": "myapp:"
+        }
+    },
+    "authentication": {
+        "jwt": {
+            "expiresIn": "24h",
+            "refreshTokenExpiry": "7d",
+            "issuer": "myapp.com",
+            "audience": "myapp-users"
+        },
+        "oauth": {
+            "google": {
+                "enabled": true,
+                "clientId": "google-client-id"
+            },
+            "github": {
+                "enabled": true,
+                "clientId": "github-client-id"
+            }
+        },
+        "passwordPolicy": {
+            "minLength": 8,
+            "requireUppercase": true,
+            "requireNumbers": true,
+            "requireSymbols": true,
+            "maxAge": 90,
+            "preventReuse": 5
+        }
+    },
+    "logging": {
+        "level": "info",
+        "format": "json",
+        "outputs": [
+            {
+                "type": "console",
+                "enabled": true
+            },
+            {
+                "type": "file",
+                "enabled": true,
+                "path": "/var/log/myapp/app.log",
+                "maxSize": "100MB",
+                "maxFiles": 10,
+                "compress": true
+            },
+            {
+                "type": "elasticsearch",
+                "enabled": true,
+                "host": "localhost:9200",
+                "index": "myapp-logs"
+            }
+        ]
+    },
+    "features": {
+        "userRegistration": true,
+        "emailVerification": true,
+        "passwordReset": true,
+        "twoFactorAuth": false,
+        "socialLogin": true,
+        "fileUpload": {
+            "enabled": true,
+            "maxSize": "10MB",
+            "allowedTypes": ["image/jpeg", "image/png", "application/pdf"]
+        },
+        "analytics": {
+            "enabled": true,
+            "provider": "google",
+            "trackingId": "GA-XXXXXXXXX"
+        }
+    },
+    "notifications": {
+        "email": {
+            "provider": "sendgrid",
+            "fromAddress": "noreply@myapp.com",
+            "fromName": "MyApp Team"
+        },
+        "sms": {
+            "provider": "twilio",
+            "enabled": false
+        },
+        "push": {
+            "provider": "firebase",
+            "enabled": true
+        }
+    }
+}
+                </pre>
+                <p><strong>Configuration benefits:</strong> Environment-specific settings, feature flags, service configuration, and centralized application parameters that can be modified without code changes.</p>
+            </div>
+        </section>
+
+        <nav class="navigation-links">
+            <a href="overview.html" class="nav-link">← Overview</a>
+            <a href="bestPractices.html" class="nav-link">Best Practices →</a>
+        </nav>
+    </main>
+
+    <footer class="footer-wrapper">
+        <section class="container">
+            <h5>&copy; 2023 Ewandro Rodrigues Silva. All rights reserved.</h5>
+            <div class="social-media-link-container">
+                <ul class="social-media-link-group">
+                    <li class="social-media-links">
+                        <a href="https://github.com/EwandroRS" class="social-media-link" target="_blank" rel="noopener noreferrer">
+                            <img src="../images/github.png" alt="GitHub" class="social-media-icon">
+                        </a>
+                    </li>
+                    <li class="social-media-links">
+                        <a href="https://www.youtube.com/@ewandrorsdev" class="social-media-link" target="_blank" rel="noopener noreferrer">
+                            <img src="../images/youtube.png" alt="YouTube" class="social-media-icon">
+                        </a>
+                    </li>
+                    <li class="social-media-links">
+                        <a href="https://www.linkedin.com/in/ewandrors/" class="social-media-link" target="_blank" rel="noopener noreferrer">
+                            <img src="../images/linkedin.png" alt="LinkedIn" class="social-media-icon">
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </section>
+    </footer>
+</body>
+</html>
