@@ -6,6 +6,7 @@
     <title>JSON Overview - Json Utilities</title>
     <link rel="stylesheet" href="../style.css">
     <link rel="icon" href="../favicon.ico" type="image/x-icon">
+    <script src="../js/index.js" defer></script>
 </head>
 <body>
     <main class="main-content">
@@ -14,7 +15,7 @@
                 <h1 class="title-main">JSON Overview</h1>
                 <h6 class="subtitle-author">
                     by<br>
-                    <a href="https://www.linkedin.com/in/ewandrors/">Ewandro Rodrigues Silva</a>
+                   <a href="#" onclick="showAuthorDesc(); return false;">Ewandro Rodrigues Silva</a>
                 </h6>
             </section>
         </header>
@@ -205,7 +206,7 @@ user:
     "type": "module",
     "scripts": {
         "dev": "vite",
-        "build": "tsc && vite build",  
+        "build": "tsc && vite build",
         "test": "vitest",
         "lint": "eslint src/**/*.{ts,tsx}",
         "deploy": "npm run build && aws s3 sync dist/ s3://my-bucket"

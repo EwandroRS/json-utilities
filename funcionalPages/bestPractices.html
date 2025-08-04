@@ -6,6 +6,7 @@
     <title>JSON Best Practices - Json Utilities</title>
     <link rel="stylesheet" href="../style.css">
     <link rel="icon" href="../favicon.ico" type="image/x-icon">
+    <script src="../js/index.js"  defer></script>
 </head>
 <body>
     <main class="main-content">
@@ -14,7 +15,7 @@
                 <h1 class="title-main">JSON Best Practices</h1>
                 <h6 class="subtitle-author">
                     by<br>
-                    <a href="https://www.linkedin.com/in/ewandrors/">Ewandro Rodrigues Silva</a>
+                    <a href="#" onclick="showAuthorDesc(); return false;">Ewandro Rodrigues Silva</a>
                 </h6>
             </section>
         </header>
@@ -38,7 +39,7 @@
 {
     "userProfile": {
         "firstName": "John",
-        "lastName": "Doe", 
+        "lastName": "Doe",
         "isEmailVerified": true,
         "accountCreatedAt": "2023-10-15T14:30:00Z",
         "phoneNumbers": [
@@ -108,7 +109,7 @@
     }
 }
 
-// ❌ Poor data type choices  
+// ❌ Poor data type choices
 {
     "product": {
         "id": 12345,
@@ -206,7 +207,7 @@
             "price": 2999
         },
         {
-            "id": "ITEM_002", 
+            "id": "ITEM_002",
             "name": "Product 2",
             "price": 1999
         }
@@ -285,7 +286,7 @@
             },
             {
                 "field": "age",
-                "code": "OUT_OF_RANGE", 
+                "code": "OUT_OF_RANGE",
                 "message": "Age must be between 18 and 120",
                 "value": 150,
                 "min": 18,
